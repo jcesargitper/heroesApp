@@ -1,4 +1,5 @@
-<h1>Héroe <small>Nombre del Héroe</small></h1>
+<h1>Héroe </h1>
+<small>Nombre del Héroe</small>
 <hr>
 
 <div class="row text-right">
@@ -14,33 +15,33 @@
     <div class="col">
 
 
-        <form>
+        <form (ngSubmit)="guardar( f )" #f="ngForm">
 
             <div class="form-group">
                 <label for="">Firebase ID</label>
-                <input type="text" class="form-control" disabled="disabled" placeholder="FireBase ID">
+                <input type="text" class="form-control" [(ngModel)]="heroe.id" name="id" disabled="disabled" placeholder="FireBase ID">
                 <small class="form-text text-muted">este campo es autogenerado</small>
             </div>
 
             <div class="form-group">
                 <label for="">Nombre</label>
-                <input type="text" class="form-control" placeholder="Nombre del héroe" required>
+                <input type="text" class="form-control" [(ngModel)]="heroe.nombre" name="nombre" placeholder="Nombre del héroe" required>
             </div>
 
             <div class="form-group">
                 <label for="">Poder</label>
-                <input type="text" class="form-control" placeholder="Poder del héroe" required>
+                <input type="text" class="form-control" [(ngModel)]="heroe.poder" name="poder" placeholder="Poder del héroe" required>
             </div>
 
-            <div class="form-group">
+            <div class="form-group text-center">
                 <label for="">Estado</label>
                 <br>
-                <button class="btn btn-outline-success w-50" type="button">
+                <button *ngIf="heroe.vivo" (click)="heroe.vivo = false" class="btn btn-outline-success w-50" type="button">
                     <i class="fa fa-smile-wink"></i>
                     vivo
                 </button>
 
-                <button class="btn btn-outline-danger w-50" type="button">
+                <button *ngIf="!heroe.vivo" (click)="heroe.vivo = true" class="btn btn-outline-danger w-50" type="button">
                     <i class="fa fa-dizzy"></i>
                     Muerto
                 </button>
