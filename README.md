@@ -1,2 +1,2 @@
-# heroeApp
+# heroesApp
 Angular projects
