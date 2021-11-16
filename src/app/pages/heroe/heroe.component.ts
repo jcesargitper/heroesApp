@@ -12,7 +12,7 @@ export class HeroeComponent implements OnInit {
 
   heroe: HeroeModel = new HeroeModel();
 
-  constructor( private heroeService: HeroesService ) { }
+  constructor( private heroesService: HeroesService ) { }
 
   ngOnInit(): void {
   }
@@ -24,7 +24,11 @@ export class HeroeComponent implements OnInit {
       return; 
     }
     
-    // this.heroes.cre
+     this.heroesService.crearHeroe( this.heroe )
+       .subscribe( resp => {
+         console.log( resp );
+         this.heroe = resp; // esto esta demas
+       } );
 
 
   }
