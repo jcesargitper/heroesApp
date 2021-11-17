@@ -23,14 +23,26 @@ export class HeroeComponent implements OnInit {
       console.log("Foemulario no Valido"); 
       return; 
     }
-    
-     this.heroesService.crearHeroe( this.heroe )
-       .subscribe( resp => {
-         console.log( resp );
-         this.heroe = resp; // esto esta demas
-       } );
 
+    if ( this.heroe.id ) {
+
+      this.heroesService.actualizarHeroe( this.heroe )
+        .subscribe( resp => {
+          console.log( resp );
+        });
+
+    } else {
+
+      this.heroesService.crearHeroe( this.heroe )
+        .subscribe( resp => {
+          console.log( resp );
+          this.heroe = resp; // esto esta demas
+        } );
+    }
+    
 
   }
+
+
 
 }
