@@ -23,11 +23,18 @@
         </tr>
     </thead>
     <tbody>
-        <td scope="row">1</td>
-        <td>mard</td>
-        <td>sadfds</td>
-        <td>dasfasd</td>
-        <td>dasfasd</td>
+        <tr *ngFor="let heroe of heroes; let i = index">
+            <td scope="row">{{ i + 1 }}</td>
+            <td>{{ heroe.nombre }}</td>
+            <td>{{ heroe.poder }}</td>
+            <td>
+
+                <label *ngIf="heroe.vivo" class="badge bg-success">vivo</label>
+                <label *ngIf="!heroe.vivo" class="badge bg-danger">Muerto</label>
+
+            </td>
+            <td></td>
+        </tr>
     </tbody>
 </table>
 
