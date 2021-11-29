@@ -11,12 +11,14 @@ import Swal from 'sweetalert2';
 export class HeroesComponent implements OnInit {
 
   heroes: HeroeModel[] = [];
+  cargando = true;
 
 
   constructor( private heroesService: HeroesService ) { }
 
   ngOnInit(): void {
-
+    
+    this.cargando = true;
     this.heroesService.getHeroes()
       
     // codigo sin reducir
@@ -27,7 +29,11 @@ export class HeroesComponent implements OnInit {
       // });
 
       // reduciendo codigo
-      .subscribe( resp => this.heroes = resp );
+      .subscribe( resp => {
+        this.cargando = false;
+        this.heroes = resp;
+      });
+      
 
   }
 

@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HeroeModel } from '../models/heroe.model';
 import { HttpClient } from '@angular/common/http';
-import { map } from 'rxjs/operators';
+import { delay, map } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -56,8 +56,8 @@ getHeroe( id: string ) {
     return this.http.get(`${ this.url }/heroes.json` )
       .pipe(
         // map( resp => this.crearArreglo( resp ) // 
-        map( this.crearArreglo )  // esto es lo mismo que el anterior
-
+        map( this.crearArreglo ),  // esto es lo mismo que el anterior
+        delay(1500) // demora la peticion 1500 milisegundo
         
       );
 
